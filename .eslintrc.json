@@ -9,5 +9,9 @@
 			"no-debugger": "warn",
 			"angular/file-name": "off",
 			"angular/function-type": "off"
-		}
+		},
+		"parserOptions": {
+			"ecmaVersion": 6,
+			"sourceType": "module"
+	}
 }
