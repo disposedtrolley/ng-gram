@@ -6,6 +6,8 @@
 		"rules": {
 			"semi": "off",
 			"no-console": "off",
-			"no-debugger": "warn"
+			"no-debugger": "warn",
+			"angular/file-name": "off",
+			"angular/function-type": "off"
 		}
 }
