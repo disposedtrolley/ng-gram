@@ -2,7 +2,7 @@ angular
 	.module('app')
 	.config(config)
 
-function config($stateProvider, $urlRouterProvider) {
+function config($stateProvider, $urlRouterProvider, $authProvider) {
 	$stateProvider
 		.state('home', {
 			url: '/',
@@ -25,4 +25,18 @@ function config($stateProvider, $urlRouterProvider) {
 			controller: 'PhotoController as vm'
 		})
 	$urlRouterProvider.otherwise('/')
+
+	$authProvider
+		.loginUrl = 'http://localhost:3000/auth/login'
+		.signupUrl = 'http://localhost:3000/auth/signup'
+		.oauth2({
+			name: 'instagram',
+			url: 'http://localhost:3000/auth/instagram',
+			redirectUri: 'http://localhost:8000',
+			clientId: 'd949fcc019f249eb9ac8cf68693e5034',
+			requiredUrlParams: ['scope'],
+			scope: ['likes'],
+			scopeDelimiter: '+',
+			authorizationEndpoint: 'https://api.instagram.com/oauth/authorize'
+		})
 }

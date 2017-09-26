@@ -21,9 +21,7 @@
 		</div>
 	</div>
 
-	<div class="container">
-		<div ui-view></div>
-	</div>
+	<div ui-view></div>
 	
 	<!-- Dependencies -->
 	<script src="../node_modules/angular/angular.js"></script>
@@ -31,12 +29,16 @@
 	<script src="../node_modules/angular-messages/angular-messages.js"></script>
 	<script src="../node_modules/jquery/dist/jquery.js"></script>
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="../node_modules/satellizer/dist/satellizer.js"></script>
 
 	<!-- App config -->
-	<script src="app/app.js"></script>
-	<script src="app/app.config.js"></script>
+	<script src="client/app.js"></script>
+	<script src="client/app.config.js"></script>
 
 	<!-- Routes -->
-	<script src="app/routes/home/home.controller.js"></script>		
+	<script src="client/routes/home/home.controller.js"></script>		
+	<script src="client/routes/login/login.controller.js"></script>	
+	<script src="client/routes/signup/signup.controller.js"></script>	
+	<script src="client/routes/photo/photo.controller.js"></script>	
 </body>
 </html>
