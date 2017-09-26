@@ -10,7 +10,7 @@
 					<span class="ion-at form-control-feedback"></span>
 					<div class="help-block" ng-if="vm.loginForm.email.$dirty" ng-messages="vm.loginForm.email.$error">
 						<div ng-message="required">Please enter your email</div>
-						<div ng-message="server">{{errorMessage.email}}</div>
+						<div ng-message="server">{{vm.errorMessage.email}}</div>
 					</div>
 				</div>
 
@@ -19,7 +19,7 @@
 					<span class="ion-key form-control-feedback"></span>
 					<div class="help-block" ng-if="vm.loginForm.password.$dirty" ng-messages="vm.loginForm.password.$error">
 						<div ng-message="required">Please enter your password</div>
-						<div ng-message="server">{{errorMessage.password}}</div>
+						<div ng-message="server">{{vm.errorMessage.password}}</div>
 					</div>
 				</div>
 
