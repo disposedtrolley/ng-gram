@@ -108,7 +108,7 @@ app.post('/auth/instagram', function(req, res) {
 	}
 
 	// Exchange auth code for access token
-	request.post({ url: accessTokenUrl, form: params, json: true }, function(err, res, body) {
+	request.post({ url: accessTokenUrl, form: params, json: true }, function(error, response, body) {
 		if (req.headers.authorization) {	// Link user accounts.
 			User.findOne({ instagramId: body.user.id }, function(err, existingUser) {
 				const token = req.headers.authorization.split(' ')[1]
@@ -154,7 +154,7 @@ app.post('/auth/instagram', function(req, res) {
 					instagramId: body.user.id,
 					username: body.user.username,
 					fullName: body.user.full_name,
-					picture: bodu.user.profile_picture,
+					picture: body.user.profile_picture,
 					accessToken: body.access_token
 				})
 
