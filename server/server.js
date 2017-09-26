@@ -167,6 +167,17 @@ app.post('/auth/instagram', function(req, res) {
 	})
 })
 
+app.get('/api/feed', isAuthenticated, function(req, res) {
+	const feedUrl = 'https://api.instagram.com/v1/users/self/media/recent'
+	const params = { access_token: req.user.accessToken }
+
+	request.get({ url: feedUrl, qs: params, json: true }, function(error, response, body) {
+		if (!error && response.statusCode == 200) {
+			res.send(body.data)
+		}
+	})
+})
+
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'))
 })
