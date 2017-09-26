@@ -5,8 +5,8 @@
 		.module('app')
 		.controller('SignupController', SignupController)
 	
-	SignupController.$inject = ['$auth']
-	function SignupController($auth) {
+	SignupController.$inject = ['$auth', '$state']
+	function SignupController($auth, $state) {
 		let vm = this
 
 		vm.signup = signup
@@ -20,6 +20,9 @@
 			}
 
 			$auth.signup(user)
+				.then(function(res) {
+					$state.go('home')
+				})
 				.catch(function(res) {
 					console.log(res.data)
 				})

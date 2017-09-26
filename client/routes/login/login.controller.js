@@ -5,8 +5,8 @@
 		.module('app')
 		.controller('LoginController', LoginController)
 
-	LoginController.$inject = ['$window', '$location', '$rootScope', '$auth']
-	function LoginController($window, $location, $rootScope, $auth) {
+	LoginController.$inject = ['$window', '$location', '$rootScope', '$auth', '$state']
+	function LoginController($window, $location, $rootScope, $auth, $state) {
 		let vm = this
 
 		vm.errorMessage
@@ -20,6 +20,7 @@
 				.then(function(res) {
 					$window.localStorage.currentUser = JSON.stringify(res.data.user)
 					$rootScope.currentUser = JSON.parse($window.localStorage.currentUser)
+					$state.go('home')
 				})
 				.catch(function(res) {
 					console.log(res.data)
@@ -34,6 +35,7 @@
 				.then(function(res) {
 					$window.localStorage.currentUser = JSON.stringify(res.data.user)
 					$rootScope.currentUser = JSON.parse($window.localStorage.currentUser)
+					$state.go('home')
 				})
 				.catch(function(res) {
 					vm.errorMessage = {}
