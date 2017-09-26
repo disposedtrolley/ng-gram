@@ -189,6 +189,22 @@ app.get('/api/media/:id', isAuthenticated, function(req, res, next) {
 	})
 })
 
+app.post('/api/like', isAuthenticated, function(req, res, next) {
+	const mediaId = req.body.mediaId
+	const accessToken = { access_token: req.user.accessToken }
+	const likeUrl = `https://api.instagram.com/v1/media/${mediaId}/likes`
+
+	request.post({ url: likeUrl, form: accessToken, json: true }, function(error, response, body) {
+		if (response.statusCode !== 200) {
+			return res.status(response.statusCode).send({
+				code: response.statusCode,
+				message: body.meta.error_message
+			})
+		}
+		res.status(200).end()
+	})
+})
+
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'))
 })
