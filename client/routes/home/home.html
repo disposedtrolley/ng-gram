@@ -3,7 +3,7 @@
 	<div ng-if="vm.isAuthenticated() && currentUser.username">
 		<div class="row">
 			<div ng-repeat="photo in vm.photos" class="col-lg-2 col-sm-3 col-xs-4">
-				<a ui-sref="photo({id: id})">
+				<a ui-sref="photo({id: photo.id})">
 					<img ng-src="{{photo.images.standard_resolution.url}}" class="thumbnail img-responsive">
 				</a>
 			</div>
