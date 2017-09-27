@@ -1,6 +1,7 @@
 angular
 	.module('app')
 	.config(config)
+	.run(run)
 
 function config($stateProvider, $urlRouterProvider, $authProvider) {
 	$stateProvider
@@ -38,4 +39,10 @@ function config($stateProvider, $urlRouterProvider, $authProvider) {
 			scopeDelimiter: '+',
 			authorizationEndpoint: 'https://api.instagram.com/oauth/authorize'
 		})
+}
+
+function run($rootScope, $window, $auth) {
+	if ($auth.isAuthenticated()) {
+    $rootScope.currentUser = JSON.parse($window.localStorage.currentUser)
+  }
 }
