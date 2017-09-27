@@ -19,7 +19,7 @@
 			if ($auth.isAuthenticated() && ($rootScope.currentUser && $rootScope.currentUser.username)) {
 				API.getFeed()
 					.then(function(data) {
-						vm.photos = data;
+						vm.photos = data.data
 					});
 			}
 		}
@@ -35,7 +35,7 @@
 					$rootScope.currentUser = JSON.parse($window.localStorage.currentUser)
 					API.getFeed()
 						.then(function(data) {
-							vm.photos = data;
+							vm.photos = data.data
 						});
 				})
 		}
