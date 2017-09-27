@@ -7,6 +7,7 @@ const moment = require('moment')
 const mongoose = require('mongoose')
 const path = require('path')
 const request = require('request')
+const compress = require('compression')
 const config = require('./config')
 
 const User = mongoose.model('User', new mongoose.Schema({
@@ -24,10 +25,11 @@ mongoose.connect(config.db)
 const app = express()
 
 app.set('port', process.env.PORT || 3000)
+app.use(compress())
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: 2628000000 }))
 
 function createToken(user) {
 	const payload = {

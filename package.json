@@ -20,6 +20,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "bootstrap": "^3.3.7",
+    "compression": "^1.7.1",
     "cors": "^2.8.4",
     "express": "^4.15.5",
     "ionicons": "^3.0.0",
